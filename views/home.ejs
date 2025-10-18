@@ -1,0 +1,100 @@
+  <%- include('partials/navbar') %>
+  <body>
+
+    <div class="container py-4">
+      <div
+        id="heroCorousel"
+        class="carousel slide mb-5"
+        data-bs-ride="carousel"
+      >
+        <div class="carousel-inner rounded-4 shadow">
+          <div class="carousel-item active">
+            <img src="/images/5450566.jpg" class="d-block w-100" alt="..." />
+          </div>
+          <div class="carousel-item">
+            <img src="/images/8852975.jpg" class="d-block w-100" alt="..." />
+          </div>
+          <div class="carousel-item">
+            <img src="/images/5450566.jpg" class="d-block w-100" alt="..." />
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#heroCorousel"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#heroCorousel"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon"></span>
+        </button>
+      </div>
+      <h2 class="text-center fw-bold mb-4 text-primary">
+        ✨ Featured Products ✨
+      </h2>
+      <div class="row g-4">
+        <% if (products.length > 0) { %> <% products.forEach(product => { %>
+        <div class="col-md-3">
+          <div class="card product-card bg-white shadow-sm">
+            <img
+              src="<%= product.image %>"
+              class="card-img-top"
+              width="200"
+              height="200"
+              alt="Product Image"
+            />
+            <div class="card-body text-center">
+              <h5 class="card-title text-dark"><%= product.name %></h5>
+              <p class="text-muted">₹<%= product.price %></p>
+              <p class="text-muted"><%= product.Category.title %></p>
+              <div class="d-flex align-items-center gap-2 justify-content-center">
+              <form action="/add-cart" method="post">
+                <input
+                  type="hidden"
+                  name="productId"
+                  value="<%= product.id %>"
+                />
+                <button type="submit" class="btn add-btn text-light w-100">
+                  Add to Cart
+                </button>
+              </form>
+              <a href="/product/<%= product.id %>">
+              <button class="btn btn-success">View product</button></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% }) %> <% } else { %>
+        <p class="text-center text-muted">No products found.</p>
+        <% } %>
+      </div>
+      <nav class="mt-5">
+        <ul class="pagination justify-content-center">
+          <li class="page-item <%= currPage == 1 ? 'disabled' : '' %>">
+            <a class="page-link" href="/home?page=<%= currPage - 1 %>"
+              >Previous</a
+            >
+          </li>
+          <% for(let i = 1; i <= totalPage; i++) { %>
+          <li class="page-item <%= currPage == i ? 'active' : '' %>">
+            <a class="page-link" href="/home?page=<%= i %>"><%= i %></a>
+          </li>
+          <% } %>
+          <li class="page-item <%= currPage == totalPage ? 'disabled' : '' %>">
+            <a class="page-link" href="/home?page=<%= currPage + 1 %>">Next</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+        <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+  </body>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar</title>
+
+        <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      crossorigin="anonymous"
+    />
+
+        <style>
+      body {
+        background-color: #f9fafb;
+        font-family: "Poppins", sans-serif;
+      }
+      .carousel img {
+        height: 400px;
+        object-fit: cover;
+        border-radius: 15px;
+      }
+      .product-card {
+        border: none;
+        border-radius: 15px;
+        overflow: hidden;
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+      .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 12px;
+      }
+      .add-btn {
+        background-color: #0d6efd;
+        border: none;
+        transition: all 0.2s;
+      }
+      .add-btn:hover {
+        background-color: #0b5ed7;
+      }
+    </style>
+</head>
+<body>
+        <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+      <div class="container">
+        <a class="navbar-brand fw-bold text-info" href="/">🛍️ ShopEase</a>
+        <form action="/home" method="get" class="d-flex" role="search">
+          <input
+            class="form-control me-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+            name="search"
+          />
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+        <div class="d-flex">
+          <a href="/cart" class="btn btn-outline-info me-2"
+            >🛒 Cart (<span id="cartCount"><%= totalCartItems %></span>)</a
+          >
+          <a href="/add-product" class="btn btn-light me-2">+ Add Product</a>
+          <a href="/logout" class="btn btn-danger">Logout</a>
+        </div>
+      </div>
+    </nav>
+
+        <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+</body>
+</html>
