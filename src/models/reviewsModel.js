@@ -5,6 +5,7 @@ import User from "./userModel.js";
 
 const Review=sequilize.define('Review',{
     title:{type:DataTypes.STRING},
+    rating:{type:DataTypes.INTEGER},
     productId:{type:DataTypes.INTEGER},
     userId:{type:DataTypes.INTEGER}
 });
